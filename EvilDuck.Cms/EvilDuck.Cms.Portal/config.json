@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "EvilDuck.Cms.Portal"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Data Source=.\\SQLEXPRESS;Initial Catalog=EvilDuck.Web.Portal;User ID=sa;Password=samael666"
+    }
+  }
+}

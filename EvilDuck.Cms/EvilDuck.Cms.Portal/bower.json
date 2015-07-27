@@ -1,0 +1,12 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "*",
+    "font-awesome": "*",
+    "moment": "*",
+    "jquery": "*",
+    "jquery-validation-unobtrusive": "*",
+    "jquery-ajax-unobtrusive": "*"
+  }
+}
