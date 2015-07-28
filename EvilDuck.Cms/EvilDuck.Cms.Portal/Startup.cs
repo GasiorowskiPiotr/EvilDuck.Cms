@@ -15,6 +15,7 @@ using System;
 using Autofac;
 using EvilDuck.Cms.Portal.Framework.Logging;
 using Autofac.Framework.DependencyInjection;
+using EvilDuck.Cms.Portal.Properties;
 
 namespace EvilDuck.Cms.Portal
 {
@@ -34,6 +35,7 @@ namespace EvilDuck.Cms.Portal
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
             }
+
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -71,7 +73,7 @@ namespace EvilDuck.Cms.Portal
 
             // Add MVC services to the services container.
             services.AddMvc();
-
+            services.Configure<AppSettings>(Configuration.GetConfigurationSection("AppSettings"));
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
             // services.AddWebApiConventions();
@@ -84,6 +86,7 @@ namespace EvilDuck.Cms.Portal
             cb.Populate(services);
 
             cb.RegisterType<Log>().As<ILog>().InstancePerDependency();
+            cb.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
 
             var container = cb.Build();
 

@@ -1,6 +1,10 @@
 {
   "AppSettings": {
-    "SiteTitle": "EvilDuck.Cms.Portal"
+    "SiteTitle": "EvilDuck.Cms.Portal",
+    "Installers": [
+      "EvilDuck.Cms.Portal.Installers.RolesInstaller, EvilDuck.Cms.Portal",
+      "EvilDuck.Cms.Portal.Installers.SecurityInstaller, EvilDuck.Cms.Portal"
+    ]
   },
   "Data": {
     "DefaultConnection": {

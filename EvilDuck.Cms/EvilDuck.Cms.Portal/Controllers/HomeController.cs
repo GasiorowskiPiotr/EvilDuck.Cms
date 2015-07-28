@@ -8,6 +8,7 @@ namespace EvilDuck.Cms.Portal.Controllers
 {
     public class HomeController : Controller
     {
+        
         public IActionResult Index()
         {
             return View();
