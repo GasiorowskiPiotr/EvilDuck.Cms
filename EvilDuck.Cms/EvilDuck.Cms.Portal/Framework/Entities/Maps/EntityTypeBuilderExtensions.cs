@@ -25,7 +25,7 @@ namespace EvilDuck.Cms.Portal.Framework.Entities.Maps
         public static void MapStandardEntityIntKey<TEntity>(this EntityTypeBuilder builder) where TEntity : Entity<int>
         {
             builder.Key(Pn<TEntity>.Get(e => e.Id));
-            builder.Property<TEntity>(Pn<TEntity>.Get(e => e.Id)).GenerateValueOnAdd();
+            builder.Property<TEntity>(Pn<TEntity>.Get(e => e.Id)).ValueGeneratedOnAdd();
         }
 
     }

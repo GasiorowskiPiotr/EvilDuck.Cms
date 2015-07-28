@@ -131,9 +131,9 @@ namespace EvilDuck.Cms.Portal.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult LogOff()
+        public async Task<IActionResult> LogOff()
         {
-            _signInManager.SignOut();
+            await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
@@ -446,7 +446,7 @@ namespace EvilDuck.Cms.Portal.Controllers
             if (!_databaseChecked)
             {
                 _databaseChecked = true;
-                context.Database.AsRelational().ApplyMigrations();
+                context.Database.ApplyMigrations();
             }
         }
 

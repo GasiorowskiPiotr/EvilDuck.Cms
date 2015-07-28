@@ -1,6 +1,7 @@
 ﻿using EvilDuck.Cms.Portal.Framework.Logging;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Relational;
+using Microsoft.Data.Entity.Storage;
 using System;
 using System.Data;
 using System.Security.Principal;
@@ -44,10 +45,10 @@ namespace EvilDuck.Cms.Portal.Framework.Entities
             _log.LogInfo(() => String.Format("Saving UnitOfWork changes"));
             return _context.SaveChangesAsync();
         }
-        public RelationalTransaction BeginTransaction(IsolationLevel isolationLevel)
+        public IRelationalTransaction BeginTransaction(IsolationLevel isolationLevel)
         {
             _log.LogInfo(() => String.Format("Beginning transaction {0}", isolationLevel));
-            return _context.Database.AsRelational().Connection.BeginTransaction(isolationLevel);
+            return _context.Database.BeginTransaction(isolationLevel);
         }
 
         public void SetUser(IIdentity user)

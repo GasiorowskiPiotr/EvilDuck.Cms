@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.Entity.Relational;
+﻿using Microsoft.Data.Entity.Storage;
 using System.Data;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace EvilDuck.Cms.Portal.Framework.Entities
         void Delete<TEntity>(TEntity entity) where TEntity : Entity;
         void SaveChanges();
         Task SaveChangesAsync();
-        RelationalTransaction BeginTransaction(IsolationLevel isolationLevel);
+        IRelationalTransaction BeginTransaction(IsolationLevel isolationLevel);
 
         void SetUser(IIdentity user);
     }
