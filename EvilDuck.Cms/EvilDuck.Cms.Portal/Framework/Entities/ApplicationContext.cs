@@ -48,18 +48,24 @@ namespace EvilDuck.Cms.Portal.Framework.Entities
                 if (entry.State == EntityState.Added)
                 {
                     _log.LogInfo(() => String.Format("Creating new entity of type: {0} - {1}", entry.Entity.GetType(), entry.Entity.ToString()));
-                    var entity = (Entity)entry.Entity;
-                    entity.CreatedBy = _user.Name;
-                    entity.CreatedOn = now;
-                    entity.LastUpdatedOn = now;
-                    entity.LastUpdatedBy = _user.Name;
+                    var entity = entry.Entity as Entity;
+                    if(entity != null)
+                    {
+                        entity.CreatedBy = _user.Name;
+                        entity.CreatedOn = now;
+                        entity.LastUpdatedOn = now;
+                        entity.LastUpdatedBy = _user.Name;
+                    }
                 }
                 else if (entry.State == EntityState.Modified)
                 {
-                    var entity = (Entity)entry.Entity;
-                    _log.LogInfo(() => String.Format("Updating entity of type: {0} with id: {1} - {2}", entry.Entity.GetType(), entity.GetKey(), entity.ToString()));
-                    entity.LastUpdatedOn = now;
-                    entity.LastUpdatedBy = _user.Name;
+                    var entity = entry.Entity as Entity;
+                    if(entity != null)
+                    {
+                        _log.LogInfo(() => String.Format("Updating entity of type: {0} with id: {1} - {2}", entry.Entity.GetType(), entity.GetKey(), entity.ToString()));
+                        entity.LastUpdatedOn = now;
+                        entity.LastUpdatedBy = _user.Name;
+                    }
                 }
 
 
